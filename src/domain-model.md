@@ -16,7 +16,6 @@ As a customer:
 - I'd like to be able to choose fillings for my bagel.
 - I'd like to know the cost of each filling.
 
-
 | Classes           | Methods                                             | Scenario                                         | Output                                         |
 |-------------------|-----------------------------------------------------|--------------------------------------------------|------------------------------------------------|
 | publicMember      | void addBagel(String variant)                       | if basket is not full and Bagel in inventory     | add Bagel to Basket                            |
