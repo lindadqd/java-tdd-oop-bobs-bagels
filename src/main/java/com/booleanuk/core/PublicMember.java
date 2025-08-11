@@ -1,10 +1,10 @@
 package com.booleanuk.core;
 
-public class publicMember {
+public class PublicMember {
     Basket basket;
     Inventory inventory;
 
-    public publicMember(Basket basket, Inventory inventory){
+    public PublicMember(Basket basket, Inventory inventory){
         this.basket = basket;
         this.inventory = inventory;
     }

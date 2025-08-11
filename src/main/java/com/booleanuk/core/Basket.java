@@ -23,10 +23,12 @@ public class Basket {
     }
 
     public boolean removeItem(String itemToRemove){
-        for (Item item : items){
-            if (Objects.equals(item.getVariant().toUpperCase(), itemToRemove)){
-                items.remove(item);
-                return true;
+        if (!items.isEmpty()) {
+            for (Item item : items){
+                if (Objects.equals(item.getVariant().toUpperCase(), itemToRemove)){
+                    items.remove(item);
+                    return true;
+                }
             }
         }return false;
     }
