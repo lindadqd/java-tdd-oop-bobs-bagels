@@ -1,4 +1,6 @@
 package com.booleanuk.core;
 
-public class Filling {
+public class Filling extends Item {
+    public Filling(String bacon) {
+    }
 }
