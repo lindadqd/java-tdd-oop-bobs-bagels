@@ -42,4 +42,8 @@ public class Basket {
             return true;
         } else return false;
     }
+
+    public float getTotalCost() {
+        return 100000;
+    }
 }

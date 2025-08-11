@@ -7,6 +7,10 @@ public class Item {
     protected String name;
 
     public String getVariant() {
-        return variant;
+        return this.variant;
+    }
+
+    public float getPrice() {
+        return this.price;
     }
 }
