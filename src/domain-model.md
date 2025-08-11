@@ -16,76 +16,61 @@ As a customer:
 - I'd like to be able to choose fillings for my bagel.
 - I'd like to know the cost of each filling.
 
-| Classes           | Methods                                             | Scenario                                         | Output                                         |
-|-------------------|-----------------------------------------------------|--------------------------------------------------|------------------------------------------------|
-| publicMember      | void addBagel(String variant)                       | if basket is not full and Bagel in inventory     | add Bagel to Basket                            |
-|                   |                                                     | if basket is full                                | print "Basket is full"                         |
-|                   | void changeOrder(String variant)                    | if Bagel in basket                               | remove Bagel from Basket                       |
-|                   |                                                     | if Bagel not in basket                           | print "Bagel not in basket"                    |
-|                   | void removeItem(String item)                        | if item in basket                                | remove item from Basket                        |
-|                   |                                                     | if item not in basket                            | print "Item not in basket"                     |
-| ----------------- | ----------------------------------------------      | ---------------------------------------------    | --------------------------------------------   |
-| Manager           | boolean canOrder(String item)                       | if item in Inventory                             | customer can add to Basket                     |
-|                   |                                                     | if item not in Inventory                         | return false                                   | 
-|                   | boolean changeCapacity(Basket basket, int capacity) | if capacity not negative                         | change basket capacity                         |
-|                   |                                                     | if capacity negative                             | return false                                   |
-| ----------------- | -----------------------------------------------     | ----------------------------------------------   | ---------------------------------------------  |
-| Customer          | float getTotalCost(Basket)                          | if Basket contains at least 1 item               | return total cost                              |
-|                   |                                                     | if Basket is empty                               | return 0                                       |
-|                   | float getBagelPrice(String variant)                 | if Bagel in inventory                            | return Bagel price                             | 
-|                   |                                                     | if Bagel not in inventory                        | return 0                                       |
-|                   | String addFilling(String variant)                   | if Filling in inventory                          | add Filling to Bagel                           |
-|                   |                                                     | if Filling not in inventory                      | return "We don't have this kind of filling"    |
-|                   | float getFillingPrice(String variant)               | if Filling in inventory                          | return Filling price                           |
-|                   |                                                     | if Filling not in inventory                      | return 0                                       |
-| ----------------- | ------------------------------------------------    | ------------------------------------------------ | ---------------------------------------------- |
-| Basket            | List<Object> getItems()                             | if Basket contains at least one item             | return List of items                           |
-|                   |                                                     | if Basket is empty                               | return empty List                              |
-|                   | String changeOrder(String typeOfBagel)              | if Bagel in basket                               | remove Bagel from Basket                       |
-|                   |                                                     | if Bagel not in basket                           | return "Bagel not in Basket"                   |
-|                   | String removeItem(Basket)                           | if item in basket                                | remove item from Basket                        |
-|                   |                                                     | if item not in basket                            | return "item not in Basket                     |
-|                   | String checkBasket()                                | if Basket is full                                | return "Basket is full"                        |             
-|                   |                                                     | if Basket is empty                               | return "Basket is empty"                       |
-|                   |                                                     | if Basket contains at least one item             | return "Basket contains " + items              |
-|                   | void changeCapacity(List<Basket> baskets)           | if Basket list not empty                         | change capacity of all baskets and new baskets |
-|                   |                                                     | if Basket list empty                             | change capacity of all new baskets             |
-|                   | float getTotalCost()                                | if Basket contains at least one item             | return total cost of basket                    |
-|                   |                                                     | if Basket is empty                               | return 0                                       |
-|                   | boolean changeCapacity(int capacity)                | if capacity not negative                         | change basket capacity                         |
-|                   |                                                     | if capacity negative                             | return false                                   |
-| ----------------- | ------------------------------------------------    | ------------------------------------------------ | ---------------------------------------------- |
-| Inventory         | void inInventory(String SKU)                        | if item SKU in inventory                         | return true                                    |
-|                   |                                                     | if item SKU not in inventory                     | return false                                   |
-| ----------------- | ------------------------------------------------    | ------------------------------------------------ | ---------------------------------------------- |
-| Item              | float getPrice()                                    | if item in inventory                             | return price                                   |
-|                   |                                                     | if item not in inventory                         | return 0                                       |
-|                   | String getVariant()                                 | if item in inventory                             | return variant                                 |
-|                   |                                                     | if item not in inventory                         | return "We don't have this filling!"           |
-|                   | String getSKU()                                     | -                                                | return SKU                                     |                                                |                                                  |                                                |
-|                   |                                                     |                                                  |                                                |
-|                   |                                                     |                                                  |                                                |
-| ----------------- | ------------------------------------------------    | ------------------------------------------------ | ---------------------------------------------- |
-| Bagel             | float getPrice()                                    | if Bagel in inventory                            | return price                                   |
-|                   |                                                     | if Bagel not in inventory                        | return 0                                       |
-|                   | String getVariant()                                 | if Bagel in inventory                            | return variant                                 |
-|                   |                                                     | if Bagel not in inventory                        | return "We don't have this filling!"           |
-|                   | void addFilling(Filling variant)                    | if Filling in inventory                          | add Filling to Bagel                           |
-|                   |                                                     | if Filling not in inventory                      | print "We don't have this filling!"            |
-|                   | String getSKU()                                     | -                                                | return SKU                                     |
-|                   |                                                     |                                                  |                                                |
-| ----------------- | ------------------------------------------------    | ------------------------------------------------ | ---------------------------------------------- |
-| Coffee            | float getPrice()                                    | if Coffee in inventory                           | return price                                   |
-|                   |                                                     | if Coffee not in inventory                       | return 0                                       |
-|                   | String getVariant()                                 | if Coffee in inventory                           | return variant                                 |
-|                   |                                                     | if Coffee not in inventory                       | return "We don't have this coffee!"            |
-|                   | String getSKU()                                     | -                                                | return SKU                                     |
-|                   |                                                     |                                                  |                                                |
-| ----------------- | ------------------------------------------------    | ------------------------------------------------ | ---------------------------------------------- |
-| Filling           | float getPrice()                                    | if Filling in inventory                          | return price                                   |
-|                   |                                                     | if Filling not in inventory                      | return 0                                       |
-|                   | String getVariant()                                 | if Filling in inventory                          | return variant                                 |
-|                   |                                                     | if Filling not in inventory                      | return "We don't have this filling!"           |
-|                   | String getSKU()                                     | -                                                | return SKU                                     |
-|                   |                                                     |                                                  |                                                |
-|                   |                                                     |                                                  |                                                |
+| Classes           | Instance variable              | Methods                                          | Scenario                                         | Output                                         |
+|-------------------|--------------------------------|--------------------------------------------------|--------------------------------------------------|------------------------------------------------|
+| publicMember      | -Basket basket                 | boolean addBagelToBasket(Bagel bagel)            | if basket is not full                            | add Bagel to Basket and return true            |
+|                   | -Inventory inventory           |                                                  | if basket is full                                | return false                                   |
+|                   |                                | boolean changeOrder(Item item)                   | if item in basket                                | remove item from Basket and return true        |
+|                   |                                |                                                  | if item not in basket                            | return false                                   |
+|                   |                                | boolean isBasketFull()                           | if basket is full                                | return true                                    |
+|                   |                                |                                                  | if basket is not full                            | return false                                   |
+| ----------------- | -----------------------------  | ----------------------------------------------   | ---------------------------------------------    | --------------------------------------------   |
+| Manager           | Inherits basket and inventory  | boolean canOrder(Item item)                      | if item in Inventory                             | return true                                    |
+|                   | from public member             |                                                  | if item not in Inventory                         | return false                                   | 
+|                   |                                | boolean changeCapacity(int capacity)             | if capacity not negative                         | change basket capacity and return true         |
+|                   |                                |                                                  | if capacity negative                             | return false                                   |
+| ----------------- | -----------------------------  | -----------------------------------------------  | ----------------------------------------------   | ---------------------------------------------  |
+| Customer          | Inherits basket and inventory  | float getTotalCost()                             | if Basket contains at least 1 item               | return total cost                              |
+|                   | from public member             |                                                  | if Basket is empty                               | return 0                                       |
+|                   |                                | float getBagelPrice(Bagel bagel)                 | always                                           | return Bagel price                             | 
+|                   |                                | boolean addFilling(Bagel bagel, Filling filling) | if Filling is not null                           | add Filling to Bagel and return true           |
+|                   |                                |                                                  | if Filling is null                               | return false                                   |
+|                   |                                | float getFillingPrice(Filling filling)           | always                                           | return Filling price                           |
+| ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
+| Basket            | -int capacity                  | List<Item> getItems()                            | if Basket contains at least one item             | return List of items                           |
+|                   | -List<Item> items              |                                                  | if Basket is empty                               | return empty List                              |
+|                   |                                | boolean changeOrder(Item item)                   | if item in basket                                | remove item from Basket and return true        |
+|                   |                                |                                                  | if item not in basket                            | return false                                   |
+|                   |                                | boolean addItemToBasket(Item item)               | if Basket is not full                            | add item to Basket and return true             |
+|                   |                                |                                                  | if Basket is full                                | return false                                   |
+|                   |                                | int getCurrentCapacity()                         | always                                           | return capacity                                |
+|                   |                                |                                                  |                                                  |                                                |
+|                   |                                | float getTotalCost()                             | if Basket contains at least one item             | return sum of all item prices                  |
+|                   |                                |                                                  | if Basket is empty                               | return 0                                       |
+|                   |                                | boolean changeCapacity(int capacity)             | if capacity not negative                         | change basket capacity and return true         |
+|                   |                                |                                                  | if capacity negative                             | return false                                   |
+|                   |                                | boolean isEmpty()                                | if Basket is empty                               | return true                                    |
+|                   |                                |                                                  | if Basket is not empty                           | return false                                   |
+|                   |                                | boolean isFull()                                 | if items.size() >= capacity                      | return true                                    |
+|                   |                                |                                                  | if Basket is not full                            | return false                                   |
+|                   |                                | int getNumberOfItems()                           | always                                           | return number of items                         |
+| ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
+| Inventory         | -Map<String,Item> items        | boolean inInventory(Item item)                   | if item in inventory map                         | return true                                    |
+|                   |                                |                                                  | if item not in inventory map                     | return false                                   |
+|                   |                                | Item getItem(String sku)                         | if sku exist in inventory                        | return Item object                             |
+|                   |                                |                                                  | if sky not in inventory                          | return null                                    |
+| ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
+| Item              | -float price                   | float getPrice()                                 | always                                           | return price                                   |
+|                   | -String variant                | String getVariant()                              | alwyas                                           | return variant                                 |
+|                   | -String SKU                    | String getSKU()                                  | always                                           | return SKU                                     |
+|                   | -String name                   | String getNAme()                                 | always                                           | return name                                    |
+| ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
+| Bagel             | -List<Filling> fillings        | boolean addFilling(Filling filling)              | if Filling is not null                           | add Filling to Bagel ajd return true           |
+|                   |                                |                                                  | if Filling is null                               | return false                                   |
+|                   |                                | List<Filling> getFillings()                      | always                                           | return list of fillings                        |
+|                   |                                | float getTotalPrice()                            | always                                           | return bagel price + sum of filling price      |
+|                   |                                | Inherits all Item methods                        |                                                  |                                                |
+| ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
+| Coffee            |                                | Inherits all Item methods                        |                                                  |                                                |
+| ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
+| Filling           |                                | Inherits all Item methods                        |                                                  |                                                |
