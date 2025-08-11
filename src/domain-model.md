@@ -55,13 +55,13 @@ As a customer:
 |                   |                                |                                                  | if Basket is not full                            | return false                                   |
 |                   |                                | int getNumberOfItems()                           | always                                           | return number of items                         |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
-| Inventory         | -Map<String,Item> items        | boolean inInventory(Item item)                   | if item in inventory map                         | return true                                    |
+| Inventory         | -Map<String,Item> items        | boolean inInventory(String item)                 | if item in inventory map                         | return true                                    |
 |                   |                                |                                                  | if item not in inventory map                     | return false                                   |
-|                   |                                | Item getItem(String sku)                         | if sku exist in inventory                        | return Item object                             |
-|                   |                                |                                                  | if sky not in inventory                          | return null                                    |
+|                   |                                | Map<String,Item> getItemsInInventory()           | always                                           | return map of items                            |
+|                   |                                |                                                  |                                                  |                                                |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
 | Item              | -float price                   | float getPrice()                                 | always                                           | return price                                   |
-|                   | -String variant                | String getVariant()                              | alwyas                                           | return variant                                 |
+|                   | -String variant                | String getVariant()                              | always                                           | return variant                                 |
 |                   | -String SKU                    | String getSKU()                                  | always                                           | return SKU                                     |
 |                   | -String name                   | String getNAme()                                 | always                                           | return name                                    |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
