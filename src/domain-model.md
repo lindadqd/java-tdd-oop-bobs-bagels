@@ -18,14 +18,14 @@ As a customer:
 
 | Classes           | Instance variable              | Methods                                          | Scenario                                         | Output                                         |
 |-------------------|--------------------------------|--------------------------------------------------|--------------------------------------------------|------------------------------------------------|
-| publicMember      | -Basket basket                 | boolean addBagelToBasket(Bagel bagel)            | if basket is not full                            | add Bagel to Basket and return true            |
+| publicMember      | -Basket basket                 | boolean addBagelToBasket(String variant)         | if basket is not full and variant in Inventory   | add Bagel to Basket and return true            |
 |                   | -Inventory inventory           |                                                  | if basket is full                                | return false                                   |
-|                   |                                | boolean changeOrder(Item item)                   | if item in basket                                | remove item from Basket and return true        |
+|                   |                                | boolean changeOrder(String item)                 | if item in basket                                | remove item from Basket and return true        |
 |                   |                                |                                                  | if item not in basket                            | return false                                   |
 |                   |                                | boolean isBasketFull()                           | if basket is full                                | return true                                    |
 |                   |                                |                                                  | if basket is not full                            | return false                                   |
 | ----------------- | -----------------------------  | ----------------------------------------------   | ---------------------------------------------    | --------------------------------------------   |
-| Manager           | Inherits basket and inventory  | boolean canOrder(Item item)                      | if item in Inventory                             | return true                                    |
+| Manager           | Inherits basket and inventory  | boolean canOrder(String item)                    | if item in Inventory                             | return true                                    |
 |                   | from public member             |                                                  | if item not in Inventory                         | return false                                   | 
 |                   |                                | boolean changeCapacity(int capacity)             | if capacity not negative                         | change basket capacity and return true         |
 |                   |                                |                                                  | if capacity negative                             | return false                                   |
