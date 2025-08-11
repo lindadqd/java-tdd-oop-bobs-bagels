@@ -17,8 +17,6 @@ public class publicMemberTest {
         Assertions.assertEquals(true, member.addBagelToBasket("Sesame"));
         Assertions.assertEquals(true,member.addBagelToBasket("OnIOn"));
         Assertions.assertEquals(true,member.addBagelToBasket("SESAME"));
-
-
     }
 
     @Test
