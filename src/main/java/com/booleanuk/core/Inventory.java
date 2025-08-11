@@ -9,7 +9,6 @@ public class Inventory {
 
     public Inventory(){
         setDefaultInventory();
-        System.out.println(inventory);
     }
 
     public boolean inInventory(String variant) {
@@ -37,10 +36,6 @@ public class Inventory {
         inventory.put("CREAM CHEESE", new Filling("Cream Cheese"));
         inventory.put("SMOKED SALMON", new Filling("Smoked Salmon"));
         inventory.put("HAM", new Filling("Ham"));
-
-
-
-
 
     }
 }

@@ -30,6 +30,16 @@ public class Basket {
                     return true;
                 }
             }
-        }return false;
+        } return false;
+    }
+
+    public boolean setCapacity(int newCapacity, Manager manager){
+        if (manager == null) {
+            throw new SecurityException("Only managers can change basket capacity");
+        }
+        if (newCapacity >= 0){
+            this.capacity = newCapacity;
+            return true;
+        } else return false;
     }
 }
