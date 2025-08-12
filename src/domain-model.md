@@ -58,11 +58,11 @@ As a customer:
 |                   |                                | String getSKU()                                  | always                                           | return SKU                                     |
 |                   |                                | String getNAme()                                 | always                                           | return name                                    |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
-| Bagel             | -List<Filling> fillings        | boolean addFilling(Filling filling)              | if Filling is not null                           | add Filling to Bagel ajd return true           |
+| Bagel             | -List<Filling> fillings        | boolean addFilling(Filling filling)              | if Filling is not null                           | add Filling to Bagel and return true           |
 |                   | - float price                  |                                                  | if Filling is null                               | return false                                   |
 |                   | - String variant               | List<Filling> getFillings()                      | always                                           | return list of fillings                        |
 |                   | - String sku                   | float getTotalPrice()                            | always                                           | return bagel price + sum of filling price      |
-|                   | - String name                  | boolean removeFilling(Filling filling)           | if Filling in fillings list                      | remove Filling from list and return true       |
+|                   | - String name                  | boolean removeFilling(String filling)            | if Filling in fillings list                      | remove Filling from list and return true       |
 |                   |                                |                                                  | if Filling not in fillings list                  | return false                                   |
 |                   |                                | implements all Item methods                      |                                                  |                                                |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |

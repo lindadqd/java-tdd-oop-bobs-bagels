@@ -1,6 +1,7 @@
 package com.booleanuk.core;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Bagel implements Item{
@@ -56,10 +57,18 @@ public class Bagel implements Item{
         return this.name;
     }
 
-    public void addFilling(String filling){
-        String addFilling = filling.toUpperCase();
-        fillings.add(new Filling(addFilling));
+    public boolean addFilling(String filling){
+        //String addFilling = filling.toUpperCase();
+        //fillings.add(new Filling(addFilling));
+        return false;
     }
 
 
+    public List<Filling>getFillings() {
+        return null;
+    }
+
+    public boolean removeFilling(String filling) {
+        return false;
+    }
 }
