@@ -76,8 +76,6 @@ As a customer:
 |                   | - String sku                   |                                                  |                                                  |                                                |
 |                   | - String name                  |                                                  |                                                  |                                                |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
-| Order             | List<Item> orders              | Item createOrder(String variant)                 | if variant in Inventory                          | create Item and return Item                    |
-|                   |                                |                                                  | if variant not in Inventory                      | return null                                    |
 |                   |                                |                                                  |                                                  |                                                |
 |                   |                                |                                                  |                                                  |                                                |
 |                   |                                |                                                  |                                                  |                                                |
