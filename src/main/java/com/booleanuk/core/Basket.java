@@ -14,9 +14,11 @@ public class Basket {
         this.items = new ArrayList<>();
     }
     public void addBagelToBasket(String variant) {
-        String item = variant.toUpperCase();
-        Bagel bagel = new Bagel(item);
-        items.add(bagel);
+        if (!this.isFull()) {
+            String item = variant.toUpperCase();
+            Bagel bagel = new Bagel(item);
+            items.add(bagel);
+        }
     }
 
     public boolean addItemToBasket(Item variant) {
@@ -81,14 +83,14 @@ public class Basket {
     }
 
     public List<Item> getItems() {
-        return null;
+        return items;
     }
 
     public int getCurrentCapacity() {
-        return 0;
+        return capacity;
     }
 
     public int getNumberOfItems() {
-        return 0;
+        return items.size();
     }
 }

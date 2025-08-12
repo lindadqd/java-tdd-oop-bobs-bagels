@@ -13,14 +13,14 @@ public class BasketTest {
         Bagel bagel = new Bagel("onion");
         basket.addItemToBasket(bagel);
 
-        Assertions.assertEquals(true, basket.getItems().contains(bagel));
+        Assertions.assertTrue(basket.getItems().contains(bagel));
 
     }
     @Test
     public void getItemsEmptyBasket(){
         Basket basket = new Basket();
 
-        Assertions.assertNull(basket.getItems());
+        Assertions.assertTrue(basket.getItems().isEmpty());
     }
 
     @Test
@@ -58,7 +58,7 @@ public class BasketTest {
         Coffee coffee = new Coffee("black");
         Filling filling = new Filling("egg");
 
-        Assertions.assertEquals(false, basket.addItemToBasket(filling));
+        Assertions.assertFalse(basket.addItemToBasket(filling));
 
         basket.addItemToBasket(bagel);
         basket.addItemToBasket(bagel2);
@@ -66,7 +66,7 @@ public class BasketTest {
         basket.addItemToBasket(bagel4);
         basket.addItemToBasket(bagel5);
 
-        Assertions.assertEquals(false, basket.addItemToBasket(coffee));
+        Assertions.assertFalse(basket.addItemToBasket(coffee));
     }
 
     @Test
@@ -101,11 +101,11 @@ public class BasketTest {
     @Test
     public void isFull(){
         Basket basket = new Basket();
-        Assertions.assertEquals(false, basket.isFull());
+        Assertions.assertFalse(basket.isFull());
     }
 
     @Test
-    public void isFulltrue(){
+    public void isFullTrue(){
         Basket basket = new Basket();
         basket.addBagelToBasket("onion");
         basket.addBagelToBasket("onion");
@@ -115,7 +115,7 @@ public class BasketTest {
         basket.addBagelToBasket("onion");
 
 
-        Assertions.assertEquals(true, basket.isFull());
+        Assertions.assertTrue(basket.isFull());
     }
 
     @Test
