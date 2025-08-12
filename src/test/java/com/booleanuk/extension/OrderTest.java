@@ -12,7 +12,6 @@ public class OrderTest {
       Bagel sesame = new Bagel("Sesame");
       Coffee black = new Coffee("Black");
 
-
     @Test
     public void emptyOrder(){
         Basket basket = new Basket();
