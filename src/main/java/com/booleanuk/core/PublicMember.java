@@ -17,6 +17,12 @@ public class PublicMember {
         } else return false;
     }
 
+    public void addBagelToBasket(Bagel bagel){
+        if (!basket.isFull()){
+            basket.addBagelToBasket(bagel);
+        }
+    }
+
     public boolean removeItem(String item) {
         String itemUpperCase = item.toUpperCase();
         return basket.removeItem(itemUpperCase);

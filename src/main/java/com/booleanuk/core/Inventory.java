@@ -9,9 +9,11 @@ public class Inventory {
 
     public Inventory(){
         setDefaultInventory();
+        System.out.println(inventory);
     }
 
     public boolean inInventory(String variant) {
+        String item = variant.toUpperCase();
         for (String key : inventory.keySet()) {
             if (Objects.equals(key, variant)) {
                 return true;
@@ -37,5 +39,10 @@ public class Inventory {
         inventory.put("SMOKED SALMON", new Filling("Smoked Salmon"));
         inventory.put("HAM", new Filling("Ham"));
 
+    }
+
+    public Item getItem(String variant){
+        String item = variant.toUpperCase();
+        return inventory.get(item);
     }
 }

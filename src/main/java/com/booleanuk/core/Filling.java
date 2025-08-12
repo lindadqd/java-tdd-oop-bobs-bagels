@@ -16,6 +16,7 @@ public class Filling extends Item {
             case "CREAM CHEESE" -> super.sku = "FILX";
             case "SMOKED SALMON" -> super.sku = "FILS";
             case "HAM" -> super.sku = "FILH";
+            case "EGG" -> super.sku = "FILE";
         }
     }
 }

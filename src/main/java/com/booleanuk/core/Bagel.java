@@ -1,6 +1,10 @@
 package com.booleanuk.core;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bagel extends Item{
+    List<Filling> fillings = new ArrayList<>();
 
     public Bagel(String variant) {
         super.variant = variant.toUpperCase();
@@ -20,4 +24,27 @@ public class Bagel extends Item{
             case "SESAME" -> super.sku = "BGLS";
         }
     }
+
+    @Override
+    public float getPrice(){
+        float totalPrice = super.price;
+
+        System.out.println("variant: " + super.variant);
+        System.out.println("Base: " + super.price);
+        System.out.println("Number fillings: " + fillings.size());
+
+        if (!fillings.isEmpty()){
+            for (Filling filling : fillings) {
+                totalPrice += filling.getPrice();
+            }
+        }
+        return totalPrice;
+    }
+
+    public void addFilling(String filling){
+        String addFilling = filling.toUpperCase();
+        fillings.add(new Filling(addFilling));
+    }
+
+
 }

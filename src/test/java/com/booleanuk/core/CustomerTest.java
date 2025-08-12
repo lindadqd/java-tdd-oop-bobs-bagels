@@ -17,6 +17,7 @@ public class CustomerTest {
         Assertions.assertEquals(0.98F, customer.getTotalCost());
     }
 
+
     @Test
     public void getTotalCostWithNoItems(){
         Basket basket = new Basket();
@@ -55,7 +56,21 @@ public class CustomerTest {
         Customer customer = new Customer(basket, inventory);
 
 
-        Assertions.assertEquals(true, customer.addFilling("everything", "eggy"));
+        Assertions.assertEquals(false, customer.addFilling("everything", "eggy"));
+    }
+
+    @Test
+    public void getTotalCostWithItemsWithFILLING(){
+        Basket basket = new Basket();
+        Inventory inventory = new Inventory();
+        Customer customer = new Customer(basket, inventory);
+
+        customer.addBagelToBasket("onion");
+        customer.addFilling("onion", "cheese");
+        customer.addBagelToBasket("plain");
+        customer.addBagelToBasket("everything");
+
+        Assertions.assertEquals(1.49F, customer.getTotalCost());
     }
 
     @Test
@@ -78,8 +93,10 @@ public class CustomerTest {
         Inventory inventory = new Inventory();
         Customer customer = new Customer(basket, inventory);
 
+        Bagel bagel = new Bagel("onion");
+        customer.addBagelToBasket(bagel);
         customer.addFilling("onion","egg");
 
-        Assertions.assertEquals(0.61F, customer.getTotalBagelPrice());
+        Assertions.assertEquals(0.61F, customer.getTotalBagelPrice(bagel));
     }
 }

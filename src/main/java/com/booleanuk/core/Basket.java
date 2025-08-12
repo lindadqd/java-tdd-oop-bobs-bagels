@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Objects;
 
 public class Basket {
-    private int capacity;
+    private static int capacity;
     private final int DEFAULT_CAPACITY = 5;
     List<Item> items;
 
     public Basket(){
-        this.capacity = DEFAULT_CAPACITY;
+        capacity = DEFAULT_CAPACITY;
         this.items = new ArrayList<>();
     }
     public void addBagelToBasket(String variant) {
@@ -18,8 +18,12 @@ public class Basket {
         items.add(bagel);
     }
 
+    public void addBagelToBasket(Bagel variant) {
+        items.add(variant);
+    }
+
     public boolean isFull() {
-        return items.size() == capacity;
+        return items.size() >= capacity;
     }
 
     public boolean removeItem(String itemToRemove){
@@ -38,12 +42,37 @@ public class Basket {
             throw new SecurityException("Only managers can change basket capacity");
         }
         if (newCapacity >= 0){
-            this.capacity = newCapacity;
+            capacity = newCapacity;
             return true;
         } else return false;
     }
 
     public float getTotalCost() {
-        return 100000;
+        float sum = 0;
+        for (Item item: items){
+            sum += item.getPrice();
+        }
+        return sum;
+    }
+
+    public boolean addFillingToBagel(String bagel, String filling) {
+        String bagelToUpper = bagel.toUpperCase();
+        String fillingToUpper = filling.toUpperCase();
+        for (Item item : items) {
+            if (item instanceof Bagel && item.getVariant().toUpperCase().equals(bagelToUpper)) {
+                ((Bagel) item).addFilling(filling);
+                return true;
+            }
+        }
+
+        if(isFull()){
+            System.out.println("Cannot add new bagel. The basket is full.");
+            return false;
+        }
+
+        Bagel newBagel = new Bagel(bagelToUpper);
+        newBagel.addFilling(fillingToUpper);
+        items.add(newBagel);
+        return true;
     }
 }
