@@ -24,14 +24,15 @@ As a customer:
 |                   |                                |                                                  | if item not in basket                            | return false                                   |
 |                   |                                | boolean isBasketFull()                           | if basket is full                                | return true                                    |
 |                   |                                |                                                  | if basket is not full                            | return false                                   |
+|                   |                                | boolean addItemToBasket(Item)                    | if basket is not full                            | add Item to basket                             |
 | ----------------- | -----------------------------  | ----------------------------------------------   | ---------------------------------------------    | --------------------------------------------   |
 | Manager           | Inherits basket and inventory  | boolean changeBasketCapacity(int capacity)       | if capacity not negative                         | change basket capacity and return true         |
 |                   | from public member             |                                                  | if capacity negative                             | return false                                   |
 | ----------------- | -----------------------------  | -----------------------------------------------  | ----------------------------------------------   | ---------------------------------------------  |
 | Customer          | Inherits basket and inventory  | float getTotalCost()                             | always                                           | return total cost of items                     |
 |                   |                                | float getBagelPrice(String variant)              | always                                           | return Bagel price                             | 
-|                   |                                | boolean addFilling(String bagel,String filling)  | if Filling is not null                           | add Filling to Bagel and return true           |
-|                   |                                |                                                  | if Filling is null                               | return false                                   |
+|                   |                                | boolean addFilling(String bagel,String filling)  | if Filling is in inventory                       | add Filling to Bagel and return true           |
+|                   |                                |                                                  | if Filling is not in inventory                   | return false                                   |
 |                   |                                | float getFillingPrice(String filling)            | always                                           | return Filling price                           |
 |                   |                                | float getTotalBagelPrice(Bagel)                  | always                                           | return Bagel price with Filling                |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
@@ -49,6 +50,10 @@ As a customer:
 |                   |                                | boolean isFull()                                 | if items.size() >= capacity                      | return true                                    |
 |                   |                                |                                                  | if Basket is not full                            | return false                                   |
 |                   |                                | int getNumberOfItems()                           | always                                           | return number of items                         |
+|                   |                                | boolean addBagelToBasket(String variant)         | if basket is not full                            | add Bagel to Basket                            |
+|                   |                                | boolean addFilling(String bagel,String filling)  | if bagel already in basket                       | add Filling to Bagel and return true           |
+|                   |                                |                                                  | if bagel not in basket and basket not full       | add new Bagel to basket and return true        |
+|                   |                                |                                                  | if bagel not in basket and basket is full        | return false                                   |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
 | Inventory         | -Map<String,Item> items        | boolean inInventory(String item)                 | if item in inventory map                         | return true                                    |
 |                   |                                |                                                  | if item not in inventory map                     | return false                                   |
@@ -58,10 +63,10 @@ As a customer:
 |                   |                                | String getSKU()                                  | always                                           | return SKU                                     |
 |                   |                                | String getNAme()                                 | always                                           | return name                                    |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
-| Bagel             | -List<Filling> fillings        | boolean addFilling(String filling)               | if Filling is in inventory                       | add Filling to Bagel and return true           |
-|                   | - float price                  |                                                  | if Filling is not in inventory                   | return false                                   |
+| Bagel             | -List<Filling> fillings        | void addFilling(String filling)                  | always                                           | add Filling to Bagel                           |
+|                   | - float price                  |                                                  |                                                  |                                                |
 |                   | - String variant               | List<Filling> getFillings()                      | always                                           | return list of fillings                        |
-|                   | - String sku                   | float getTotalPrice()                            | always                                           | return bagel price + sum of filling price      |
+|                   | - String sku                   |                                                  |                                                  |                                                |
 |                   | - String name                  | boolean removeFilling(String filling)            | if Filling in fillings list                      | remove Filling from list and return true       |
 |                   |                                |                                                  | if Filling not in fillings list                  | return false                                   |
 |                   |                                | implements all Item methods                      |                                                  |                                                |
@@ -76,6 +81,27 @@ As a customer:
 |                   | - String sku                   |                                                  |                                                  |                                                |
 |                   | - String name                  |                                                  |                                                  |                                                |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
-|                   |                                |                                                  |                                                  |                                                |
-|                   |                                |                                                  |                                                  |                                                |
-|                   |                                |                                                  |                                                  |                                                |
+
+
+## Extension 1: Discounts
+
+As a customer:
+- When I place an order, and it contains 6 bagels I will get a discount: 6 bagels for 2.49
+- When I place an order, and it contains 12 bagels I will get a discount: 12 bagels for 3.99
+- When I place an order, and it contains 1 coffee and 1 bagel I will get a discount: coffee & bagel for 1.25
+
+
+| Classes | Instance variables   | Methods                                       | Scenario                                      | Output                                                                 |
+|---------|----------------------|-----------------------------------------------|-----------------------------------------------|------------------------------------------------------------------------|
+| Order   | int numberOfFillings | float getTotalCost()                          | always                                        | return number of bagels in order                                       |
+|         | List<Bagel> bagels   | float applyBagelDiscount(int remainingBagels) | remainingBagels < 6                           | no bulk discount applied                                               |
+|         | List<Coffee> coffees |                                               | remainingBagels = 6                           | 2.49 special offer                                                     |
+|         |                      |                                               | remainingBagels < 12 && remainingBagels > 6   | special offer 2.49 + total cost of rest of bagels                      |
+|         |                      |                                               | remainingBagels = 12                          | 3.99 special offer                                                     |
+|         |                      |                                               | remainingBagels > 12 && remainingBagels < 18  | 3.99 special offer + total cost of rest of bagels                      |
+|         |                      |                                               | remainingBagels >= 18 && remainingBagels < 24 | 3.99 special offer + 2.49 special offer + total cost of rest of bagels |
+|         |                      |                                               | remainingBagels >= 24 ....                    | 3.99 + 3.99 + total cost of rest of bagels                             |
+|         |                      | List<Bagel> getBagels                         | always                                        | return list of bagels                                                  |
+|         |                      | List<Coffee> getCoffees                       | always                                        | return list of coffees                                                 |
+
+
