@@ -7,30 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderTest {
-
-      Bagel onion = new Bagel("Onion");
-      Bagel plain = new Bagel("Plain");
+     Bagel plain = new Bagel("Plain");
       Bagel everything = new Bagel("Everything");
       Bagel sesame = new Bagel("Sesame");
-
       Coffee black = new Coffee("Black");
-      Coffee white = new Coffee("White");
-      Coffee capuccino = new Coffee("Capuccino");
-      Coffee latte = new Coffee("Latte");
 
-      Filling bacon = new Filling("Bacon");
-      Filling egg =  new Filling("Egg");
-      Filling cheese = new Filling("Cheese");
-      Filling creamCheese =new Filling("Cream Cheese");
-      Filling salmon = new Filling("Smoked Salmon");
-      Filling ham = new Filling("Ham");
 
     @Test
     public void emptyOrder(){
         Basket basket = new Basket();
         Inventory inventory = new Inventory();
         Customer customer = new Customer(basket,inventory);
-
         Order order = customer.placeOrder();
 
         Assertions.assertEquals(0, order.getBagels().size());
@@ -43,8 +30,8 @@ public class OrderTest {
        List<Item> items = new ArrayList<>();
        items.add(black);
        items.add(plain);
-
        Order order = new Order(items);
+
        Assertions.assertEquals(1, order.getBagels().size());
        Assertions.assertEquals(1, order.getCoffees().size());
        Assertions.assertEquals(1.25F, order.getTotalCost());
@@ -52,6 +39,7 @@ public class OrderTest {
        items.add(black);
        items.add(everything);
         Order order2 = new Order(items);
+
         Assertions.assertEquals(2.5F, order2.getTotalCost());
     }
 
@@ -61,8 +49,8 @@ public class OrderTest {
         items.add(black);
         items.add(black);
         items.add(plain);
-
         Order order = new Order(items);
+
         Assertions.assertEquals(2.24F, order.getTotalCost());
     }
 
@@ -72,7 +60,6 @@ public class OrderTest {
         for (int i =0; i<6;i++){
             items.add(plain);
         }
-
         Order order = new Order(items);
 
         Assertions.assertEquals(2.49F, order.getTotalCost());
@@ -84,8 +71,8 @@ public class OrderTest {
         for (int i =0; i<7;i++){
             items.add(everything);
         }
-
         Order order = new Order(items);
+
         Assertions.assertEquals(2.98F, order.getTotalCost());
     }
 

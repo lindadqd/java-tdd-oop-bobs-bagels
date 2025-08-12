@@ -104,6 +104,19 @@ As a customer:
 |         |                      |                                               | remainingBagels >= 24 ....                    | 3.99 + 3.99 + total cost of rest of bagels                             |
 |         |                      | List<Bagel> getBagels                         | always                                        | return list of bagels                                                  |
 |         |                      | List<Coffee> getCoffees                       | always                                        | return list of coffees                                                 |
+| Basket  |                      | Order placeOrder(List<Item>)                  | always                                        | return Order                                                           |
+|         |                      |                                               |                                               |                                                                        |
+|         |                      |                                               |                                               |                                                                        |
+|         |                      |                                               |                                               |                                                                        |
 |         |                      |                                               |                                               |                                                                        |
 
 ## Extension 2: Receipt
+
+| Classes  | Instance variables      | Methods                                       | Scenario                                      | Output                                                                 |
+|----------|-------------------------|-----------------------------------------------|-----------------------------------------------|------------------------------------------------------------------------|
+| Receipt  | Order order             |                                               |                                               |                                                                        |
+|          | LocalDateTime timestamp |                                               |                                               |                                                                        |
+|          |                         |                                               |                                               |                                                                        |
+|          |                         |                                               |                                               |                                                                        |
+|          |                         |                                               |                                               |                                                                        |
+

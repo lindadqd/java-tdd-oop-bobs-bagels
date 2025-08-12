@@ -1,6 +1,8 @@
 package com.booleanuk.extension;
 
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
     private List<Bagel> bagels;
@@ -39,7 +41,7 @@ public class Order {
         int remainingBlackCoffees = blackCoffeeCount - combos;
 
         total += combos * 1.25f;
-        total += applyBagelBulkDiscounts(remainingBagels);
+        total += applyBagelDiscounts(remainingBagels);
         total += remainingBlackCoffees * 0.99f;
 
         for (Coffee coffee : coffees) {
@@ -53,7 +55,7 @@ public class Order {
         return total;
     }
 
-    private float applyBagelBulkDiscounts(int remainingBagels) {
+    private float applyBagelDiscounts(int remainingBagels) {
         float total = 0;
 
         if (remainingBagels >= 12) {
