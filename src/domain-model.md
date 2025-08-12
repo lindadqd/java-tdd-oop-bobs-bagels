@@ -90,6 +90,7 @@ As a customer:
 - When I place an order, and it contains 12 bagels I will get a discount: 12 bagels for 3.99
 - When I place an order, and it contains 1 coffee and 1 bagel I will get a discount: coffee & bagel for 1.25
 
+-Extension of the domain model over:
 
 | Classes | Instance variables   | Methods                                       | Scenario                                      | Output                                                                 |
 |---------|----------------------|-----------------------------------------------|-----------------------------------------------|------------------------------------------------------------------------|
@@ -103,5 +104,6 @@ As a customer:
 |         |                      |                                               | remainingBagels >= 24 ....                    | 3.99 + 3.99 + total cost of rest of bagels                             |
 |         |                      | List<Bagel> getBagels                         | always                                        | return list of bagels                                                  |
 |         |                      | List<Coffee> getCoffees                       | always                                        | return list of coffees                                                 |
+|         |                      |                                               |                                               |                                                                        |
 
-
+## Extension 2: Receipt
