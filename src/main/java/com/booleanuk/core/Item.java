@@ -1,6 +1,6 @@
 package com.booleanuk.core;
 
-interface Item {
+public interface Item {
 
      String getVariant();
      float getPrice();

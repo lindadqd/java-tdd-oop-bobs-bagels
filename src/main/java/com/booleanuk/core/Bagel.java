@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bagel implements Item{
-    List<Filling> fillings = new ArrayList<>();
+    private List<Filling> fillings = new ArrayList<>();
     private String variant;
     private String name;
     private String sku;

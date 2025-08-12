@@ -7,7 +7,7 @@ public class Manager extends PublicMember {
     }
 
     public Boolean changeBasketCapacity(int capacity){
-        return super.basket.setCapacity(capacity, this);
+        return basket.setCapacity(capacity, this);
     }
 
 }

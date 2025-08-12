@@ -7,19 +7,23 @@ import java.util.Objects;
 public class Basket {
     private static int capacity;
     private final int DEFAULT_CAPACITY = 5;
-    List<Item> items;
+    private List<Item> items;
 
     public Basket(){
         capacity = DEFAULT_CAPACITY;
         this.items = new ArrayList<>();
     }
     public void addBagelToBasket(String variant) {
-        Bagel bagel = new Bagel(variant);
+        String item = variant.toUpperCase();
+        Bagel bagel = new Bagel(item);
         items.add(bagel);
     }
 
-    public void addBagelToBasket(Bagel variant) {
-        items.add(variant);
+    public boolean addItemToBasket(Item variant) {
+        if (!this.isFull() && !(variant instanceof Filling)){
+            items.add(variant);
+            return true;
+        }return false;
     }
 
     public boolean isFull() {
@@ -29,7 +33,7 @@ public class Basket {
     public boolean removeItem(String itemToRemove){
         if (!items.isEmpty()) {
             for (Item item : items){
-                if (Objects.equals(item.getVariant().toUpperCase(), itemToRemove)){
+                if (Objects.equals(item.getVariant().toUpperCase(), itemToRemove.toUpperCase())){
                     items.remove(item);
                     return true;
                 }
@@ -74,5 +78,17 @@ public class Basket {
         newBagel.addFilling(fillingToUpper);
         items.add(newBagel);
         return true;
+    }
+
+    public List<Item> getItems() {
+        return null;
+    }
+
+    public int getCurrentCapacity() {
+        return 0;
+    }
+
+    public int getNumberOfItems() {
+        return 0;
     }
 }

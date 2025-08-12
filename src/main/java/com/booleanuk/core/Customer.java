@@ -19,20 +19,17 @@ public class Customer extends PublicMember {
     }
 
     public boolean addFilling(String bagel, String filling) {
-        String bagelToUpper = bagel.toUpperCase();
-        String fillingToUpper = filling.toUpperCase();
-
-        if (!inventory.inInventory(bagelToUpper)) {
+        if (!inventory.inInventory(bagel)) {
             System.out.println("We don't sell this bagel here!");
             return false;
         }
 
-        if (!inventory.inInventory(fillingToUpper)) {
+        if (!inventory.inInventory(filling)) {
             System.out.println("We don't sell this filling here!");
             return false;
         }
 
-        return basket.addFillingToBagel(bagelToUpper, fillingToUpper);
+        return basket.addFillingToBagel(bagel, filling);
     }
 
 

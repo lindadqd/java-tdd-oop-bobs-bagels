@@ -94,7 +94,7 @@ public class CustomerTest {
         Customer customer = new Customer(basket, inventory);
 
         Bagel bagel = new Bagel("onion");
-        customer.addBagelToBasket(bagel);
+        customer.addItemToBasket(bagel);
         customer.addFilling("onion","egg");
 
         Assertions.assertEquals(0.61F, customer.getTotalBagelPrice(bagel));

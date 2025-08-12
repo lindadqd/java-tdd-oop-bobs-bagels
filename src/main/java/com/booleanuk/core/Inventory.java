@@ -14,7 +14,7 @@ public class Inventory {
     public boolean inInventory(String variant) {
         String item = variant.toUpperCase();
         for (String key : inventory.keySet()) {
-            if (Objects.equals(key, variant)) {
+            if (Objects.equals(key, item)) {
                 return true;
             }
         } return false;
@@ -41,7 +41,6 @@ public class Inventory {
     }
 
     public Item getItem(String variant){
-        String item = variant.toUpperCase();
-        return inventory.get(item);
+        return inventory.get(variant.toUpperCase());
     }
 }

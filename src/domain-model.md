@@ -39,16 +39,13 @@ As a customer:
 |                   | -List<Item> items              |                                                  | if Basket is empty                               | return empty List                              |
 |                   |                                | boolean removeItem(String item)                  | if item in basket                                | remove item from Basket and return true        |
 |                   |                                |                                                  | if item not in basket                            | return false                                   |
-|                   |                                | boolean addItemToBasket(Item item)               | if Basket is not full                            | add item to Basket and return true             |
+|                   |                                | boolean addItemToBasket(Item item)               | if Basket is not full and Item not Filling       | add item to Basket and return true             |
 |                   |                                |                                                  | if Basket is full                                | return false                                   |
 |                   |                                | int getCurrentCapacity()                         | always                                           | return capacity                                |
-|                   |                                |                                                  |                                                  |                                                |
 |                   |                                | float getTotalCost()                             | if Basket contains at least one item             | return sum of all item prices                  |
 |                   |                                |                                                  | if Basket is empty                               | return 0                                       |
 |                   |                                | boolean setCapacity(int capacity)                | if called by Manager                             | change basket capacity and return true         |
 |                   |                                |                                                  | if not called by Manager                         | return false                                   |
-|                   |                                | boolean isEmpty()                                | if Basket is empty                               | return true                                    |
-|                   |                                |                                                  | if Basket is not empty                           | return false                                   |
 |                   |                                | boolean isFull()                                 | if items.size() >= capacity                      | return true                                    |
 |                   |                                |                                                  | if Basket is not full                            | return false                                   |
 |                   |                                | int getNumberOfItems()                           | always                                           | return number of items                         |

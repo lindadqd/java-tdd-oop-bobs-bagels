@@ -1,8 +1,8 @@
 package com.booleanuk.core;
 
 public class PublicMember {
-    Basket basket;
-    Inventory inventory;
+    protected Basket basket;
+    protected Inventory inventory;
 
     public PublicMember(Basket basket, Inventory inventory){
         this.basket = basket;
@@ -17,9 +17,9 @@ public class PublicMember {
         } else return false;
     }
 
-    public void addBagelToBasket(Bagel bagel){
+    public void addItemToBasket(Item bagel){
         if (!basket.isFull()){
-            basket.addBagelToBasket(bagel);
+            basket.addItemToBasket(bagel);
         }
     }
 
