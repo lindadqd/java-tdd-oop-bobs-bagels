@@ -33,7 +33,7 @@ As a customer:
 |                   |                                | boolean addFilling(String bagel,String filling)  | if Filling is not null                           | add Filling to Bagel and return true           |
 |                   |                                |                                                  | if Filling is null                               | return false                                   |
 |                   |                                | float getFillingPrice(String filling)            | always                                           | return Filling price                           |
-|                   |                                | float getTotalBagelPrice()                       | always                                           | return Bagel price with Filling                |
+|                   |                                | float getTotalBagelPrice(Bagel)                  | always                                           | return Bagel price with Filling                |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
 | Basket            | -int capacity                  | List<Item> getItems()                            | if Basket contains at least one item             | return List of items                           |
 |                   | -List<Item> items              |                                                  | if Basket is empty                               | return empty List                              |
@@ -59,22 +59,28 @@ As a customer:
 |                   |                                | boolean removeItemFromInventory(Item item)       | if Item in Inventory                             | remove item from Inventory and return true     |
 |                   |                                |                                                  | if Item not in Inventory                         | return false                                   |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
-| Item              | -float price                   | float getPrice()                                 | always                                           | return price                                   |
-|                   | -String variant                | String getVariant()                              | always                                           | return variant                                 |
-|                   | -String SKU                    | String getSKU()                                  | always                                           | return SKU                                     |
-|                   | -String name                   | String getNAme()                                 | always                                           | return name                                    |
+| Item - interface  |                                | float getPrice()                                 | always                                           | return price                                   |
+|                   |                                | String getVariant()                              | always                                           | return variant                                 |
+|                   |                                | String getSKU()                                  | always                                           | return SKU                                     |
+|                   |                                | String getNAme()                                 | always                                           | return name                                    |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
 | Bagel             | -List<Filling> fillings        | boolean addFilling(Filling filling)              | if Filling is not null                           | add Filling to Bagel ajd return true           |
-|                   |                                |                                                  | if Filling is null                               | return false                                   |
-|                   |                                | List<Filling> getFillings()                      | always                                           | return list of fillings                        |
-|                   |                                | float getTotalPrice()                            | always                                           | return bagel price + sum of filling price      |
-|                   |                                | boolean removeFilling(Filling filling)           | if Filling in fillings list                      | remove Filling from list and return true       |
+|                   | - float price                  |                                                  | if Filling is null                               | return false                                   |
+|                   | - String variant               | List<Filling> getFillings()                      | always                                           | return list of fillings                        |
+|                   | - String sku                   | float getTotalPrice()                            | always                                           | return bagel price + sum of filling price      |
+|                   | - String name                  | boolean removeFilling(Filling filling)           | if Filling in fillings list                      | remove Filling from list and return true       |
 |                   |                                |                                                  | if Filling not in fillings list                  | return false                                   |
-|                   |                                | Inherits all Item methods                        |                                                  |                                                |
+|                   |                                | implements all Item methods                      |                                                  |                                                |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
-| Coffee            |                                | Inherits all Item methods                        |                                                  |                                                |
+| Coffee            | - float price                  | implements all Item methods                      |                                                  |                                                |
+|                   | - String variant               |                                                  |                                                  |                                                |
+|                   | - String sku                   |                                                  |                                                  |                                                |
+|                   | - String name                  |                                                  |                                                  |                                                |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
-| Filling           |                                | Inherits all Item methods                        |                                                  |                                                |
+| Filling           | - float price                  | implements all Item methods                      |                                                  |                                                |
+|                   | - String variant               |                                                  |                                                  |                                                |
+|                   | - String sku                   |                                                  |                                                  |                                                |
+|                   | - String name                  |                                                  |                                                  |                                                |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
 | Order             | List<Item> orders              | Item createOrder(String variant)                 | if variant in Inventory                          | create Item and return Item                    |
 |                   |                                |                                                  | if variant not in Inventory                      | return null                                    |

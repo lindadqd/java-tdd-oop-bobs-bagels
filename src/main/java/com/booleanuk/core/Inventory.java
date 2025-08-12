@@ -9,7 +9,6 @@ public class Inventory {
 
     public Inventory(){
         setDefaultInventory();
-        System.out.println(inventory);
     }
 
     public boolean inInventory(String variant) {

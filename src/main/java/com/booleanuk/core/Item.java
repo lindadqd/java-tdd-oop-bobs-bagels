@@ -1,16 +1,9 @@
 package com.booleanuk.core;
 
-public class Item {
-    protected String variant;
-    protected float price;
-    protected String sku;
-    protected String name;
+interface Item {
 
-    public String getVariant() {
-        return this.variant;
-    }
-
-    public float getPrice() {
-        return this.price;
-    }
+     String getVariant();
+     float getPrice();
+     String getSku();
+     String getName();
 }

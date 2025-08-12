@@ -3,35 +3,40 @@ package com.booleanuk.core;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bagel extends Item{
+public class Bagel implements Item{
     List<Filling> fillings = new ArrayList<>();
+    private String variant;
+    private String name;
+    private String sku;
+    private float price;
 
     public Bagel(String variant) {
-        super.variant = variant.toUpperCase();
-        super.name = "Bagel";
-        super.price = 0.49F;
+        this.variant = variant.toUpperCase();
+        this.name = "Bagel";
+        this.price = 0.49F;
         setRest();
     }
 
     private void setRest(){
-        switch (super.variant) {
-            case "ONION" -> super.sku = "BGLO";
+        switch (this.variant) {
+            case "ONION" -> this.sku = "BGLO";
             case "PLAIN" -> {
-                super.price = 0.39F;
-                super.sku = "BGLP";
+                this.price = 0.39F;
+                this.sku = "BGLP";
             }
-            case "EVERYTHING" -> super.sku = "BGLE";
-            case "SESAME" -> super.sku = "BGLS";
+            case "EVERYTHING" -> this.sku = "BGLE";
+            case "SESAME" -> this.sku = "BGLS";
         }
     }
 
     @Override
-    public float getPrice(){
-        float totalPrice = super.price;
+    public String getVariant() {
+        return this.variant;
+    }
 
-        System.out.println("variant: " + super.variant);
-        System.out.println("Base: " + super.price);
-        System.out.println("Number fillings: " + fillings.size());
+    @Override
+    public float getPrice(){
+        float totalPrice = this.price;
 
         if (!fillings.isEmpty()){
             for (Filling filling : fillings) {
@@ -39,6 +44,16 @@ public class Bagel extends Item{
             }
         }
         return totalPrice;
+    }
+
+    @Override
+    public String getSku() {
+        return this.sku;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 
     public void addFilling(String filling){

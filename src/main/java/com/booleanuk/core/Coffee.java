@@ -1,25 +1,49 @@
 package com.booleanuk.core;
 
-public class Coffee extends Item {
+public class Coffee implements Item {
+    private String variant;
+    private String name;
+    private String sku;
+    private float price;
 
     public Coffee(String variant) {
-        super.variant = variant.toUpperCase();
-        super.name = "Coffee";
-        super.price = 1.29F;
+        this.variant = variant.toUpperCase();
+        this.name = "Coffee";
+        this.price = 1.29F;
         setRest();
     }
 
     private void setRest(){
-        switch (super.variant) {
+        switch (this.variant) {
             case "BLACK" -> {
-                super.price = 0.99F;
-                super.sku = "COFB";
+                this.price = 0.99F;
+                this.sku = "COFB";
             }
             case "WHITE" -> {
-                super.price = 1.19F;
-                super.sku = "COFW";
-            } case "CAPUCCINO" -> super.sku = "COFC";
-            case "LATTE" -> super.sku = "COFL";
+                this.price = 1.19F;
+                this.sku = "COFW";
+            } case "CAPUCCINO" -> this.sku = "COFC";
+            case "LATTE" -> this.sku = "COFL";
         }
+    }
+
+    @Override
+    public String getVariant() {
+        return this.variant;
+    }
+
+    @Override
+    public float getPrice() {
+        return this.price;
+    }
+
+    @Override
+    public String getSku() {
+        return this.sku;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 }
