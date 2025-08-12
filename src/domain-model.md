@@ -52,9 +52,6 @@ As a customer:
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
 | Inventory         | -Map<String,Item> items        | boolean inInventory(String item)                 | if item in inventory map                         | return true                                    |
 |                   |                                |                                                  | if item not in inventory map                     | return false                                   |
-|                   |                                | boolean addToInventory(Item item)                | always                                           | add item to inventory                          |
-|                   |                                | boolean removeItemFromInventory(Item item)       | if Item in Inventory                             | remove item from Inventory and return true     |
-|                   |                                |                                                  | if Item not in Inventory                         | return false                                   |
 | ----------------- | ------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------- |
 | Item - interface  |                                | float getPrice()                                 | always                                           | return price                                   |
 |                   |                                | String getVariant()                              | always                                           | return variant                                 |
