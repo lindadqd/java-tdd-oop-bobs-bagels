@@ -3,6 +3,8 @@ package com.booleanuk.core;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 public class BagelTest {
     @Test
     public void getFillings(){
@@ -15,13 +17,20 @@ public class BagelTest {
     @Test
     public void addFillingOk(){
         Bagel bagel = new Bagel("onion");
+        bagel.addFilling("egg");
+        bagel.addFilling("bacon");
+        bagel.addFilling("ham");
+        bagel.addFilling("CHEEse");
 
-        Assertions.assertTrue(bagel.addFilling("egg"));
-        Assertions.assertTrue(bagel.addFilling("bacon"));
-        Assertions.assertTrue(bagel.addFilling("cheese"));
-        Assertions.assertTrue(bagel.addFilling("cReaAm cheese"));
-        Assertions.assertTrue(bagel.addFilling("smoked SALMON"));
-        Assertions.assertTrue(bagel.addFilling("hAM"));
+        List<Filling> fillings = bagel.getFillings();
+
+        Assertions.assertEquals("EGG", fillings.get(0).getVariant());
+        Assertions.assertEquals("BACON", fillings.get(1).getVariant());
+        Assertions.assertEquals("HAM", fillings.get(2).getVariant());
+        Assertions.assertEquals("CHEESE", fillings.get(3).getVariant());
+
+
+
     }
 
     @Test

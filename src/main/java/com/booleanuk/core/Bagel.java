@@ -57,10 +57,9 @@ public class Bagel implements Item{
         return this.name;
     }
 
-    public boolean addFilling(String filling){
-        //String addFilling = filling.toUpperCase();
-        //fillings.add(new Filling(addFilling));
-        return false;
+    public void addFilling(String filling){
+        String addFilling = filling.toUpperCase();
+        fillings.add(new Filling(addFilling));
     }
 
 
