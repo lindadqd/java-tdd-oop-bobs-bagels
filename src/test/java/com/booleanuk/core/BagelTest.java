@@ -36,11 +36,13 @@ public class BagelTest {
     @Test
     public void addFillingNotOk(){
         Bagel bagel = new Bagel("onion");
+        bagel.addFilling(" ");
+        bagel.addFilling("b");
+        bagel.addFilling("hm");
+        bagel.addFilling("CEEse");
+        List<Filling> fillings = bagel.getFillings();
 
-        Assertions.assertFalse(bagel.addFilling(" "));
-        Assertions.assertFalse(bagel.addFilling("something "));
-        Assertions.assertFalse(bagel.addFilling("everything"));
-        Assertions.assertFalse(bagel.addFilling("white"));
+        Assertions.assertEquals(true, fillings.isEmpty());
     }
 
     @Test
