@@ -1,21 +1,16 @@
 package com.booleanuk.extension;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 public class Receipt {
-    public Receipt(Order order, LocalDateTime testTime) {
+    Order order;
+    public Receipt(Order order) {
+        this.order = order;
     }
 
-    public Order getOrder() {
-        return null;
-    }
 
-    public LocalDate getTimestamp() {
-        return null;
-    }
-
-    public String generateReceiptContent() {
+    public String generateReceipt() {
         return "";
+    }
+
+    public void printReceipt() {
     }
 }

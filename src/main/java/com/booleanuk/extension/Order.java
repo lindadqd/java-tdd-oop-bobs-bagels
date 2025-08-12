@@ -1,6 +1,7 @@
 package com.booleanuk.extension;
 
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,11 +37,11 @@ public class Order {
             totalFillings += bagel.getFillings().size();
         }
 
-        int combos = Math.min(blackCoffeeCount, bagels.size());
-        int remainingBagels = bagels.size() - combos;
-        int remainingBlackCoffees = blackCoffeeCount - combos;
+        int coffeeAndBagelCombo = Math.min(blackCoffeeCount, bagels.size());
+        int remainingBagels = bagels.size() - coffeeAndBagelCombo;
+        int remainingBlackCoffees = blackCoffeeCount - coffeeAndBagelCombo;
 
-        total += combos * 1.25f;
+        total += coffeeAndBagelCombo * 1.25f;
         total += applyBagelDiscounts(remainingBagels);
         total += remainingBlackCoffees * 0.99f;
 
@@ -89,5 +90,14 @@ public class Order {
 
     public List<Coffee> getCoffees() {
         return coffees;
+    }
+
+    public Receipt makeReceipt(){
+        return new Receipt(this);
+    }
+
+    public void printReceipt(){
+        Receipt receipt = makeReceipt();
+        receipt.printReceipt();
     }
 }

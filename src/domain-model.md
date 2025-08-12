@@ -90,33 +90,33 @@ As a customer:
 - When I place an order, and it contains 12 bagels I will get a discount: 12 bagels for 3.99
 - When I place an order, and it contains 1 coffee and 1 bagel I will get a discount: coffee & bagel for 1.25
 
--Extension of the domain model over:
 
-| Classes | Instance variables   | Methods                                       | Scenario                                      | Output                                                                 |
-|---------|----------------------|-----------------------------------------------|-----------------------------------------------|------------------------------------------------------------------------|
-| Order   | int numberOfFillings | float getTotalCost()                          | always                                        | return number of bagels in order                                       |
-|         | List<Bagel> bagels   | float applyBagelDiscount(int remainingBagels) | remainingBagels < 6                           | no bulk discount applied                                               |
-|         | List<Coffee> coffees |                                               | remainingBagels = 6                           | 2.49 special offer                                                     |
-|         |                      |                                               | remainingBagels < 12 && remainingBagels > 6   | special offer 2.49 + total cost of rest of bagels                      |
-|         |                      |                                               | remainingBagels = 12                          | 3.99 special offer                                                     |
-|         |                      |                                               | remainingBagels > 12 && remainingBagels < 18  | 3.99 special offer + total cost of rest of bagels                      |
-|         |                      |                                               | remainingBagels >= 18 && remainingBagels < 24 | 3.99 special offer + 2.49 special offer + total cost of rest of bagels |
-|         |                      |                                               | remainingBagels >= 24 ....                    | 3.99 + 3.99 + total cost of rest of bagels                             |
-|         |                      | List<Bagel> getBagels                         | always                                        | return list of bagels                                                  |
-|         |                      | List<Coffee> getCoffees                       | always                                        | return list of coffees                                                 |
-| Basket  |                      | Order placeOrder(List<Item>)                  | always                                        | return Order                                                           |
-|         |                      |                                               |                                               |                                                                        |
-|         |                      |                                               |                                               |                                                                        |
-|         |                      |                                               |                                               |                                                                        |
-|         |                      |                                               |                                               |                                                                        |
+Extension of the domain model over:
+
+| Classes  | Instance variables   | Methods                                       | Scenario                                      | Output                                                                 |
+|----------|----------------------|-----------------------------------------------|-----------------------------------------------|------------------------------------------------------------------------|
+| Order    | int numberOfFillings | float getTotalCost()                          | always                                        | return number of bagels in order                                       |
+|          | List<Bagel> bagels   | float applyBagelDiscount(int remainingBagels) | remainingBagels < 6                           | no bulk discount applied                                               |
+|          | List<Coffee> coffees |                                               | remainingBagels = 6                           | 2.49 special offer                                                     |
+|          |                      |                                               | remainingBagels < 12 && remainingBagels > 6   | special offer 2.49 + total cost of rest of bagels                      |
+|          |                      |                                               | remainingBagels = 12                          | 3.99 special offer                                                     |
+|          |                      |                                               | remainingBagels > 12 && remainingBagels < 18  | 3.99 special offer + total cost of rest of bagels                      |
+|          |                      |                                               | remainingBagels >= 18 && remainingBagels < 24 | 3.99 special offer + 2.49 special offer + total cost of rest of bagels |
+|          |                      |                                               | remainingBagels >= 24 ....                    | 3.99 + 3.99 + total cost of rest of bagels                             |
+|          |                      | List<Bagel> getBagels                         | always                                        | return list of bagels                                                  |
+|          |                      | List<Coffee> getCoffees                       | always                                        | return list of coffees                                                 |
+| Basket   |                      | Order placeOrder(List<Item>)                  | always                                        | return Order                                                           |
+| Customer |                      | Order placeOrder()                            | always                                        | return Order                                                           |
 
 ## Extension 2: Receipt
 
-| Classes  | Instance variables      | Methods                                       | Scenario                                      | Output                                                                 |
-|----------|-------------------------|-----------------------------------------------|-----------------------------------------------|------------------------------------------------------------------------|
-| Receipt  | Order order             |                                               |                                               |                                                                        |
-|          | LocalDateTime timestamp |                                               |                                               |                                                                        |
-|          |                         |                                               |                                               |                                                                        |
-|          |                         |                                               |                                               |                                                                        |
-|          |                         |                                               |                                               |                                                                        |
+Extension of the domain model over:
+
+| Classes | Instance variables | Methods               | Scenario | Output                             |
+|---------|--------------------|-----------------------|----------|------------------------------------|
+| Receipt | Order order        | String makeReceipt()  | always   | return String with receipt details |
+| Order   |                    | Receipt makeReceipt() | always   | return Receipt                     |
+|         |                    | void printReceipt()   | always   | print Receipt details              |
+|         |                    |                       |          |                                    |
+|         |                    |                       |          |                                    |
 

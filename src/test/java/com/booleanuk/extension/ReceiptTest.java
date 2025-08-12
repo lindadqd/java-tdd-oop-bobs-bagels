@@ -2,8 +2,6 @@ package com.booleanuk.extension;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,12 +17,9 @@ public class ReceiptTest {
         List<Item> items = new ArrayList<>();
         items.add(plain);
         Order order = new Order(items);
-        LocalDateTime testTime = LocalDateTime.of(2025, 8, 12, 11, 00, 00);
-        Receipt receipt = new Receipt(order, testTime);
+        Receipt receipt = new Receipt(order);
 
         Assertions.assertNotNull(receipt);
-        Assertions.assertEquals(order, receipt.getOrder());
-        Assertions.assertNotNull(receipt.getTimestamp());
     }
 
     @Test
@@ -32,13 +27,11 @@ public class ReceiptTest {
         List<Item> items = new ArrayList<>();
         items.add(plain);
         Order order = new Order(items);
-        LocalDateTime testTime = LocalDateTime.of(2025, 8, 12, 11, 00, 00);
-        Receipt receipt = new Receipt(order, testTime);
+        Receipt receipt = new Receipt(order);
 
-        String content = receipt.generateReceiptContent();
+        String content = receipt.generateReceipt();
 
         Assertions.assertTrue(content.contains("~~~ Bob's Bagels ~~~"));
-        Assertions.assertTrue(content.contains("2025-08-12 11:00:00"));
         Assertions.assertTrue(content.contains("----------------------------"));
     }
 
@@ -47,10 +40,9 @@ public class ReceiptTest {
         List<Item> items = new ArrayList<>();
         items.add(sesame);
         Order order = new Order(items);
-        LocalDateTime testTime = LocalDateTime.of(2025, 8, 12, 11, 00, 00);
-        Receipt receipt = new Receipt(order, testTime);
+        Receipt receipt = new Receipt(order);
 
-        String content = receipt.generateReceiptContent();
+        String content = receipt.generateReceipt();
 
         Assertions.assertTrue(content.contains("Thank you"));
         Assertions.assertTrue(content.contains("for your order!"));
@@ -61,12 +53,11 @@ public class ReceiptTest {
         List<Item> items = new ArrayList<>();
         items.add(plain);
         Order order = new Order(items);
-        LocalDateTime testTime = LocalDateTime.of(2025, 8, 12, 11, 00, 00);
-        Receipt receipt = new Receipt(order, testTime);
+        Receipt receipt = new Receipt(order);
 
-        String content = receipt.generateReceiptContent();
+        String content = receipt.generateReceipt();
 
-        Assertions.assertTrue(content.contains("Plain Bagel"));
+        Assertions.assertTrue(content.contains("PLAIN Bagel"));
         Assertions.assertTrue(content.contains("1"));
         Assertions.assertTrue(content.contains("£0.39"));
         Assertions.assertTrue(content.contains("Total"));
@@ -79,9 +70,8 @@ public class ReceiptTest {
         items.add(black);
 
         Order order = new Order(items);
-        LocalDateTime testTime = LocalDateTime.of(2025, 8, 12, 11, 00, 00);
-        Receipt receipt = new Receipt(order, testTime);
-        String content = receipt.generateReceiptContent();
+        Receipt receipt = new Receipt(order);
+        String content = receipt.generateReceipt();
 
         Assertions.assertTrue(content.contains("Total"));
         Assertions.assertTrue(content.contains("£1.25"));
