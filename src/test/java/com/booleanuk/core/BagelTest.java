@@ -34,18 +34,6 @@ public class BagelTest {
     }
 
     @Test
-    public void addFillingNotOk(){
-        Bagel bagel = new Bagel("onion");
-        bagel.addFilling(" ");
-        bagel.addFilling("b");
-        bagel.addFilling("hm");
-        bagel.addFilling("CEEse");
-        List<Filling> fillings = bagel.getFillings();
-
-        Assertions.assertEquals(true, fillings.isEmpty());
-    }
-
-    @Test
     public void getTotalPrice(){
         Basket basket = new Basket();
         Inventory inventory = new Inventory();

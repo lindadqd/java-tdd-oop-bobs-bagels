@@ -64,10 +64,16 @@ public class Bagel implements Item{
 
 
     public List<Filling>getFillings() {
-        return null;
+        return fillings;
     }
 
     public boolean removeFilling(String filling) {
-        return false;
+        String fillingToRemove = filling.toUpperCase();
+        for(Filling fillingInList: fillings){
+            if (fillingInList.getVariant().equals(fillingToRemove)){
+                fillings.remove(fillingInList);
+                return true;
+            }
+        }return false;
     }
 }
