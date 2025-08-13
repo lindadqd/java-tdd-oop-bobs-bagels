@@ -18,6 +18,7 @@ public class ReceiptTest {
         items.add(plain);
         Order order = new Order(items);
         Receipt receipt = new Receipt(order);
+        receipt.printReceipt();
 
         Assertions.assertNotNull(receipt);
     }
@@ -29,7 +30,7 @@ public class ReceiptTest {
         Order order = new Order(items);
         Receipt receipt = new Receipt(order);
 
-        String content = receipt.generateReceipt();
+        String content = receipt.makeReceipt();
 
         Assertions.assertTrue(content.contains("~~~ Bob's Bagels ~~~"));
         Assertions.assertTrue(content.contains("----------------------------"));
@@ -42,7 +43,7 @@ public class ReceiptTest {
         Order order = new Order(items);
         Receipt receipt = new Receipt(order);
 
-        String content = receipt.generateReceipt();
+        String content = receipt.makeReceipt();
 
         Assertions.assertTrue(content.contains("Thank you"));
         Assertions.assertTrue(content.contains("for your order!"));
@@ -55,7 +56,7 @@ public class ReceiptTest {
         Order order = new Order(items);
         Receipt receipt = new Receipt(order);
 
-        String content = receipt.generateReceipt();
+        String content = receipt.makeReceipt();
 
         Assertions.assertTrue(content.contains("PLAIN Bagel"));
         Assertions.assertTrue(content.contains("1"));
@@ -71,7 +72,7 @@ public class ReceiptTest {
 
         Order order = new Order(items);
         Receipt receipt = new Receipt(order);
-        String content = receipt.generateReceipt();
+        String content = receipt.makeReceipt();
 
         Assertions.assertTrue(content.contains("Total"));
         Assertions.assertTrue(content.contains("£1.25"));
